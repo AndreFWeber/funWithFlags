@@ -1,7 +1,7 @@
 // src/theme/theme.ts
 import { extendTheme } from '@chakra-ui/react';
-import Modal from './modal'
-import {mode} from "@chakra-ui/theme-tools";
+import modalTheme from './modal'
+import containerTheme from './container';
 
 const customTheme = extendTheme({
   styles: {
@@ -13,7 +13,8 @@ const customTheme = extendTheme({
     })
   },
   components: {
-    Modal
+    Modal: modalTheme,
+    Container: containerTheme
   },
 });
 

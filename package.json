@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.5",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "framer-motion": "^11.2.10",
+    "graphql": "^16.8.2",
     "next": "14.2.3",
     "nookies": "^2.5.2",
     "react": "^18",
