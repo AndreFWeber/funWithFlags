@@ -16,6 +16,7 @@ const UsernameBox = () => {
                 <FormLabel>Username</FormLabel>
                 <Input
                     placeholder="Enter your username"
+                    maxLength={30}
                     value={user.username}
                     onChange={(e) => setUSer({...user, username: e.target.value})}
                 />

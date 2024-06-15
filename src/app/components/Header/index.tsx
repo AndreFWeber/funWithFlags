@@ -7,17 +7,14 @@ import {
     Box,
     Text,
     Avatar,
+    Button
   } from '@chakra-ui/react';
-
-enum ModalBox {
-  userName = 0,
-  jobTitle = 1,
-}
- 
+import { useRouter } from 'next/navigation';
 import { useUser } from '../../context/UserContext';
 
 const Header = () => {
   const { user } = useUser();
+  const router = useRouter();
 
   return (
     <Flex
@@ -33,8 +30,19 @@ const Header = () => {
         <Box as="img" src="/fun_with_flags.png" alt="Fun with Flags Logo" boxSize="40px" mr="4" />
         <Text fontSize="xl" fontWeight="bold">Fun with Flags</Text>
       </Box>
-      <Avatar name={user.username} />
+      <Button onClick={() =>{router.push('/login')}} variant="unstyled">
+        <Flex>
+          <Avatar name={user.username}/>
+          <Box ml='3'>
+            <Text fontWeight='bold'>
+              {user.username}
+            </Text>
+            <Text fontSize='sm'>{user.jobTitle}</Text>
+          </Box>
+        </Flex>
+      </Button>
     </Flex>
+
   );
 };
 
