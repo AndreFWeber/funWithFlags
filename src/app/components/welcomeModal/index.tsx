@@ -56,7 +56,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
         </ModalBody>
         <ModalFooter>
           {step === ModalBox.jobTitle && (
-            <Button variant="ghost" mr={3} onClick={() => setStep(ModalBox.userName)}>
+            <Button variant="teal" mr={3} onClick={() => setStep(ModalBox.userName)}>
               Back
             </Button>
           )}
