@@ -13,11 +13,16 @@ import {
   CardFooter,
   Button
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import CountryInfoModal from '../CountryInfoModal'
+import LoadingSpinner from '../Spinner';
+import ErrorMessage from '../Error';
 
 interface Country {
   emoji: string,
   name: string,
   capital: string,
+  code: string,
   continent: {
     name: string
   }
@@ -29,6 +34,7 @@ const COUNTRIES_QUERY = gql`
       emoji,
       name,
       capital,
+      code,
       continent {
         name
       }
@@ -37,9 +43,12 @@ const COUNTRIES_QUERY = gql`
 `;
 
 const CountriesList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [countryCode, setCountryCode] = useState('');
+
   const { loading, error, data } = useQuery(COUNTRIES_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage/>;
 
   return (
     <Container padding={2} maxW='container.lg'>
@@ -54,11 +63,15 @@ const CountriesList = () => {
                 <Text>Capital city: {country.capital}</Text>
               </CardBody>
               <CardFooter>
-                <Button>Learn more</Button>
+                <Button onClick={() => {
+                  setIsModalOpen(true);
+                  setCountryCode(country.code)
+                }}>Learn more</Button>
               </CardFooter>
           </Card>
         ))}
       </SimpleGrid>
+      <CountryInfoModal isOpen={isModalOpen} countryCode={countryCode} onClose={()=>setIsModalOpen(false)}/>
     </Container>
   );
 };

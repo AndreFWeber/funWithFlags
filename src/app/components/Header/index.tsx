@@ -27,7 +27,7 @@ const Header = () => {
       justify="space-between"
     >
       <Box display="flex" alignItems="center">
-        <Box as="img" src="/fun_with_flags.png" alt="Fun with Flags Logo" boxSize="40px" mr="4" />
+        <Box as="img" src="/logo.png" alt="Fun with Flags Logo" boxSize="40px" mr="4" />
         <Text fontSize="xl" fontWeight="bold">Fun with Flags</Text>
       </Box>
       <Button onClick={() =>{router.push('/login')}} variant="unstyled">
